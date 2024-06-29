@@ -6,7 +6,7 @@ import User from '@/components/User/User.vue'
 import { getDateByUnix } from '@/lib/getTime'
 import { Badge } from '@/components/ui/badge'
 
-const headerClassName = 'font-bold text-black'
+const headerClassName = 'font-bold text-foreground'
 
 export const columns: ColumnDef<Transaction>[] = [
   {
