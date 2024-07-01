@@ -1,14 +1,14 @@
-import { h } from 'vue'
+import { h, ref } from 'vue'
 
 import type { ColumnDef } from '@tanstack/vue-table'
-import type { Transaction, TransactionStatus } from './transaction'
 import User from '@/components/User/User.vue'
 import { getDateByUnix } from '@/lib/getTime'
 import { Badge } from '@/components/ui/badge'
+import type { FormattedLead, LeadStatus } from '@/types/table'
 
 const headerClassName = 'font-bold text-foreground'
 
-export const columns: ColumnDef<Transaction>[] = [
+export const defaultColumns: ColumnDef<FormattedLead>[] = [
   {
     accessorKey: 'title',
     header: () => h('div', { class: headerClassName }, 'Название'),
@@ -17,12 +17,14 @@ export const columns: ColumnDef<Transaction>[] = [
     accessorKey: 'status',
     header: () => h('div', { class: headerClassName }, 'Статус'),
     cell: ({ row }) => {
-      const status = row.getValue('status') as TransactionStatus
-      const statusColorMap: { [key in TransactionStatus]: string } = {
+      const status = row.getValue('status') as LeadStatus
+      const statusColorMap: { [key in LeadStatus]: string } = {
         'Первичный контакт': '#99ccff',
         'Переговоры': '#ffff99',
         'Принимают решение': '#ffcc66',
         'Согласование договора': '#ffcccc',
+        'Успешно реализовано': '#CCFF66',
+        'Закрыто и не реализовано': '#D5D8DB',
       }
 
       return h(Badge, {
@@ -63,3 +65,5 @@ export const columns: ColumnDef<Transaction>[] = [
     },
   },
 ]
+
+export const data = ref<FormattedLead[]>([])

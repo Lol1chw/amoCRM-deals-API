@@ -1,6 +1,7 @@
 <script setup lang="ts" generic="TData, TValue">
 import type { ColumnDef } from '@tanstack/vue-table'
 import { FlexRender, getCoreRowModel, useVueTable } from '@tanstack/vue-table'
+import { Loader } from 'lucide-vue-next'
 
 import {
   Table,
@@ -14,6 +15,7 @@ import {
 const props = defineProps<{
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
+  loader: boolean
 }>()
 
 const table = useVueTable({
@@ -50,7 +52,10 @@ const table = useVueTable({
         <template v-else>
           <TableRow>
             <TableCell :colspan="columns.length" class="h-24 text-center">
-              No results.
+              <Loader v-if="loader" class="animate-spin relative left-1/2" />
+              <template v-else>
+                No results.
+              </template>
             </TableCell>
           </TableRow>
         </template>
