@@ -1,5 +1,3 @@
-# marka-testovoe
-
 # О проекте
 API-приложение для доступа к сделкам на платформе amoCRM (read-only) и их контактам.
 Пользователю доступно:
@@ -29,8 +27,17 @@ API-приложение для доступа к сделкам на платф
 - Bun
 
 # Project setup
+В репозитории /server создайте .env и переменную TOKEN с долгосрочным токеном
+```sh
+touch .env
+```
 
-### Dev mode
+```sh
+`-.env`
+TOKEN=<TOKEN>
+```
+
+### Dev
 ```sh
 bun --filter "*" dev
 ```
