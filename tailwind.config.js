@@ -56,6 +56,9 @@ module.exports = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        expanded: {
+          DEFAULT: 'hsl(var(--expanded))',
+        },
       },
 
       borderRadius: {
@@ -74,19 +77,19 @@ module.exports = {
           to: { height: 0 },
         },
         'collapsible-down': {
-          from: { height: 0 },
-          to: { height: 'var(--radix-collapsible-content-height)' },
+          from: { maxHeight: 0 },
+          to: { maxHeight: 'auto' },
         },
         'collapsible-up': {
-          from: { height: 'var(--radix-collapsible-content-height)' },
-          to: { height: 0 },
+          from: { maxHeight: 'auto' },
+          to: { maxHeight: 0 },
         },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
-        'collapsible-down': 'collapsible-down 0.2s ease-in-out',
-        'collapsible-up': 'collapsible-up 0.2s ease-in-out',
+        'collapsible-down': 'collapsible-down 0.3s ease-in-out',
+        'collapsible-up': 'collapsible-up 0.3s ease-in-out',
       },
     },
   },

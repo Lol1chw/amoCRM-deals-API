@@ -1,10 +1,20 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
-import type { FormattedLead } from '@/types/table'
+import { computed, onMounted, ref } from 'vue'
+import type { ExpandedState, ExpandedStateContent, FormattedLead } from '@/types/table'
 import DataTable from '@/components/Leads/DataTable.vue'
 import { data, defaultColumns } from '@/components/Leads/column'
-
 import Header from '@/components/Header/Header.vue'
+
+const expandedState = ref<ExpandedState[]>([])
+
+const expandedContent = computed({
+  get() {
+    return expandedState.value
+  },
+  set(newValue) {
+    expandedState.value = [...newValue]
+  },
+})
 
 const loader = ref(false)
 
@@ -15,9 +25,20 @@ onMounted(async () => {
   data.value = await response.json() as FormattedLead[]
   loader.value = false
 })
+
+function setExpandedRowByStateId(id: number, content: ExpandedStateContent | (() => ExpandedStateContent), columnIndex: number) {
+  if (typeof content !== 'function') {
+    const vNode = content
+    content = () => vNode
+  }
+
+  expandedContent.value[id] = { content, columnIndex }
+}
+
+const columns = defaultColumns({ expandedContent, setExpandedRowByStateId })
 </script>
 
 <template>
   <Header />
-  <DataTable :columns="defaultColumns" :data="data" :loader="loader" />
+  <DataTable :expanded-row-content="expandedContent" :columns="columns" :data="data" :loader="loader" />
 </template>

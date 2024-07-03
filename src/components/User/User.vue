@@ -10,7 +10,7 @@ defineProps<{
   <div class="flex items-center">
     <Avatar class="mr-2 h-8 w-8">
       <AvatarImage src="https://avatars.githubusercontent.com/u/94941930?v=4&size=64" alt="Jinx" />
-      <AvatarFallback>J</AvatarFallback>
+      <AvatarFallback>{{ name.slice(0, -name.length + 1) }}</AvatarFallback>
     </Avatar>
 
     <span>{{ name }}</span>
