@@ -1,39 +1,41 @@
 # marka-testovoe
 
-This template should help get you started developing with Vue 3 in Vite.
+# О проекте
+API-приложение для доступа к сделкам на платформе amoCRM (read-only) и их контактам.
+Пользователю доступно:
+ - Основная информация о сделке:
+   - Название
+   - Статус
+   - Бюджет
+   - Ответственный за сделку
+   - Дата создания
 
-## Recommended IDE Setup
+В подстроках таблицы также имеется дополнительная информация о сделке - закрепленные за ней контакты и информация о контактах:
+ - Имя контакта
+ - Номер телефона
+ - Email
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Built with:
 
-## Type Support for `.vue` Imports in TS
+#### Frontend:
+- Typescript
+- Vue
+- Shadcn-vue
+- TailwindCSS
+- Tanstack/vue-table
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+### Backend:
+- Typescript
+- Bun
 
-## Customize configuration
+# Project setup
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
+### Dev mode
 ```sh
-bun install
+bun --filter "*" dev
 ```
 
-### Compile and Hot-Reload for Development
-
+### Production
 ```sh
-bun dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-bun build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-bun lint
+bun --filter "start"
 ```

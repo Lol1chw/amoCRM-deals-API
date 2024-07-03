@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
-    "lint": "eslint . --fix --ignore-pattern .gitignore"
+    "lint": "eslint . --fix --ignore-pattern .gitignore",
+    "start": "vite build && vite preview"
   },
   "dependencies": {
     "@tanstack/vue-table": "^8.17.3",
