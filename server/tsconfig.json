@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "lib": ["ESNext", "DOM"],
+    "moduleDetection": "force",
+    "baseUrl": ".",
+    "module": "ESNext",
+
+    "moduleResolution": "bundler",
+    "paths": {
+      "@/types/*": ["../src/types/*"],
+      "@/services/*": ["src/services/*"]
+    },
+    "allowImportingTsExtensions": true,
+    "allowJs": true,
+
+    "strict": true,
+    "noFallthroughCasesInSwitch": true,
+
+    "noPropertyAccessFromIndexSignature": false,
+
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noEmit": true,
+    "verbatimModuleSyntax": true,
+    "skipLibCheck": true
+  },
+  "include": ["../env.d.ts", "./", "src/**/*,", "src/**/*.ts"]
+}
